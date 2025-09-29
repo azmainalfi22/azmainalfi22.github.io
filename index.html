@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mohammad Azmain Hossain Alfi – Full-Stack & Robotics Engineer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Final-year BRAC CSE | Laravel & ESP32 | Built gov platforms + self-balancing healthcare bot | Open to internships">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0e16;
+      --glass: rgba(17, 24, 39, 0.6);
+      --card: rgba(30, 41, 59, 0.5);
+      --ring: rgba(148, 163, 184, 0.2);
+      --accent: #06b6d4;
+      --accent-bright: #22d3ee;
+      --accent-2: #10b981;
+      --glow: rgba(6, 182, 212, 0.25);
+      --text: #f1f5f9;
+      --text-dim: #cbd5e1;
+      --mute: #64748b;
+      --radius: 20px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden}
+    body::before{content:"";position:fixed;inset:0;background:radial-gradient(1200px 800px at 20% 10%,rgba(6,182,212,.08),transparent 60%),radial-gradient(1000px 700px at 80% 90%,rgba(16,185,129,.06),transparent 60%);pointer-events:none;z-index:0}
+    body::after{content:"";position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");opacity:.4;pointer-events:none;z-index:1}
+    a{color:var(--accent-bright);text-decoration:none;transition:color .2s}
+    a:hover{color:var(--text)}
+    .container{width:min(1140px,92%);margin:0 auto;position:relative;z-index:2}
+    section{padding:100px 0}
+    h1,h2,h3{font-weight:700;line-height:1.2;letter-spacing:-.01em}
+    h1{font-size:clamp(2.5rem,5vw,4.2rem);letter-spacing:-.02em}
+    h2{font-size:clamp(1.8rem,3.5vw,2.6rem);margin-bottom:1.2rem;display:inline-block;background:linear-gradient(135deg,var(--accent-bright),var(--accent-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .section-title{margin-bottom:2.5rem;position:relative;padding-bottom:.8rem}
+    .section-title::after{content:"";position:absolute;bottom:0;left:0;width:60px;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:2px}
+    .tag{display:inline-flex;align-items:center;gap:.4rem;padding:.35rem .75rem;background:rgba(6,182,212,.12);border:1px solid rgba(6,182,212,.25);border-radius:6px;font-size:.8rem;color:var(--accent-bright);font-weight:500;margin:4px 4px 4px 0}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.3rem;border:1px solid var(--ring);border-radius:10px;font-weight:600;transition:all .3s;backdrop-filter:blur(4px)}
+    .btn:hover{background:var(--accent);color:var(--bg);border-color:var(--accent);transform:translateY(-2px)}
+    .btn-primary{background:var(--accent);color:var(--bg);border-color:var(--accent);box-shadow:0 4px 16px var(--glow)}
+    .btn-primary:hover{background:var(--accent-bright);box-shadow:0 6px 24px var(--glow)}
+    
+    /* Header */
+    header{position:fixed;top:0;width:100%;z-index:100;background:rgba(10,14,22,.75);backdrop-filter:blur(12px);border-bottom:1px solid var(--ring);transition:all .3s}
+    header.scrolled{background:rgba(10,14,22,.95);box-shadow:0 4px 20px rgba(0,0,0,.3)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:1.2rem 0}
+    .brand{display:flex;align-items:center;gap:.6rem;font-weight:700;font-size:1.1rem}
+    .brand .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-2));animation:pulse 2s ease-in-out infinite}
+    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.7;transform:scale(.95)}}
+    .navlinks{display:flex;gap:2rem;align-items:center}
+    .navlinks a{color:var(--text-dim);font-weight:500;font-size:.95rem;transition:color .2s}
+    .navlinks a:hover{color:var(--accent-bright)}
+    
+    /* Hero */
+    .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding-top:80px;position:relative}
+    .hero-content{max-width:900px}
+    .greeting{display:inline-block;font-size:1.05rem;color:var(--accent-bright);font-weight:600;margin-bottom:1rem;animation:fadeInDown .8s ease-out}
+    .hero h1{margin-bottom:1.2rem;animation:fadeInUp .8s ease-out .1s both}
+    .hero-role{font-size:clamp(1.2rem,2.2vw,1.5rem);font-weight:600;color:var(--accent-bright);margin-bottom:1.5rem;animation:fadeInUp .8s ease-out .2s both}
+    .hero-subtitle{font-size:clamp(1.05rem,2vw,1.25rem);color:var(--text-dim);max-width:750px;margin:0 auto 2rem;line-height:1.7;animation:fadeInUp .8s ease-out .3s both}
+    
+    /* Stats with visual icons */
+    .hero-stats{display:flex;gap:3rem;justify-content:center;margin:2.5rem 0;flex-wrap:wrap;animation:fadeInUp .8s ease-out .5s both}
+    .stat{text-align:center;position:relative}
+    .stat-icon{width:48px;height:48px;margin:0 auto .5rem;background:rgba(6,182,212,.15);border:2px solid rgba(6,182,212,.3);border-radius:12px;display:grid;place-items:center;font-size:1.5rem}
+    .stat-number{font-size:2rem;font-weight:800;background:linear-gradient(135deg,var(--accent-bright),var(--accent-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block;line-height:1;margin-bottom:.3rem}
+    .stat-label{font-size:.9rem;color:var(--mute);font-weight:500}
+    
+    .badges{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;margin:2rem auto;max-width:700px;animation:fadeInUp .8s ease-out .7s both}
+    .badge{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem 1rem;background:var(--glass);border:1px solid var(--ring);border-radius:999px;font-size:.85rem;font-weight:500;backdrop-filter:blur(8px);transition:all .3s}
+    .badge:hover{border-color:var(--accent);background:rgba(6,182,212,.1)}
+    .badge.highlight{background:rgba(6,182,212,.15);border-color:var(--accent);color:var(--accent-bright)}
+    .badge svg{width:16px;height:16px}
+    
+    .cta-group{display:flex;gap:1rem;justify-content:center;margin-top:2rem;flex-wrap:wrap;animation:fadeInUp .8s ease-out .9s both}
+    .scroll-indicator{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);animation:bounce 2s infinite;opacity:.6;font-size:1.5rem}
+    @keyframes bounce{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,10px)}}
+    
+    /* Cards with visual enhancement */
+    .grid{display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+    .card{background:var(--card);border:1px solid var(--ring);border-radius:var(--radius);padding:2rem;backdrop-filter:blur(12px);transition:all .4s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden}
+    .card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent-2));transform:scaleX(0);transform-origin:left;transition:transform .4s}
+    .card::after{content:"";position:absolute;top:20px;right:20px;width:60px;height:60px;background:radial-gradient(circle,rgba(6,182,212,.1),transparent);border-radius:50%;opacity:0;transition:opacity .4s}
+    .card:hover{transform:translateY(-8px);border-color:var(--accent);box-shadow:0 20px 40px rgba(6,182,212,.15)}
+    .card:hover::before{transform:scaleX(1)}
+    .card:hover::after{opacity:1}
+    .card h3{margin-bottom:.8rem;color:var(--text);display:flex;align-items:center;gap:.5rem}
+    .card p{margin-bottom:1.2rem;line-height:1.7;color:var(--text-dim)}
+    .card-links{display:flex;gap:1rem;margin-top:1.5rem;flex-wrap:wrap}
+    .card-link{font-size:.9rem;font-weight:600;color:var(--accent-bright);display:flex;align-items:center;gap:.3rem}
+    .card-link:hover{color:var(--text)}
+    .tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem}
+    
+    /* Timeline with visual line */
+    .timeline{position:relative;padding-left:2rem}
+    .timeline::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--accent),var(--accent-2))}
+    .timeline-item{position:relative;padding-bottom:2rem}
+    .timeline-item::before{content:"";position:absolute;left:-2.5rem;top:.5rem;width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(6,182,212,.2)}
+    .timeline-content{background:var(--card);border:1px solid var(--ring);border-radius:var(--radius);padding:1.8rem;backdrop-filter:blur(12px)}
+    .timeline-content h3{margin-bottom:.5rem;font-size:1.3rem}
+    .company{color:var(--accent-bright);font-weight:600;margin-bottom:.8rem;font-size:1.05rem}
+    .timeline-date{color:var(--mute);font-size:.9rem;font-weight:600;margin-bottom:1rem;display:inline-block}
+    
+    /* Skills grid with icons */
+    .skills-grid{display:grid;gap:1.5rem;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+    .skill-card{background:var(--card);border:1px solid var(--ring);border-radius:var(--radius);padding:1.8rem;backdrop-filter:blur(12px);transition:all .3s}
+    .skill-card:hover{border-color:var(--accent);transform:translateY(-4px)}
+    .skill-card h3{font-size:1.1rem;margin-bottom:1rem;color:var(--text);display:flex;align-items:center;gap:.6rem}
+    .skill-icon{width:24px;height:24px;background:rgba(6,182,212,.15);border-radius:6px;display:grid;place-items:center}
+    
+    footer{text-align:center;padding:3rem 0;border-top:1px solid var(--ring);color:var(--mute);font-size:.92rem}
+    footer p{margin:.5rem 0;color:var(--mute)}
+    
+    /* Animations */
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes fadeInDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+    .reveal{opacity:0;transform:translateY(30px);transition:all .7s cubic-bezier(.4,0,.2,1)}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    
+    /* Responsive */
+    @media(max-width:768px){
+      .navlinks a:not(.btn){display:none}
+      .hero-stats{gap:2rem}
+      .grid{grid-template-columns:1fr}
+      .timeline{padding-left:1.5rem}
+      .timeline-item::before{left:-2rem}
+    }
+  </style>
+</head>
+<body>
+  <header id="header">
+    <div class="container">
+      <nav class="nav">
+        <div class="brand"><span class="dot" aria-hidden="true"></span><span>Alfi</span></div>
+        <div class="navlinks">
+          <a href="#work">Projects</a>
+          <a href="#experience">Experience</a>
+          <a href="#skills">Skills</a>
+          <a href="#contact" class="btn">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <div class="greeting">Hi, I'm</div>
+        <h1>Mohammad Azmain Hossain Alfi</h1>
+        <div class="hero-role">Full-Stack Developer & Robotics Engineer</div>
+        <p class="hero-subtitle">Final-year CSE @ BRAC University. I build web platforms and robotics that make public services faster and kinder — from Laravel apps serving 50k+ users to self-balancing healthcare bots.</p>
+        
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-icon">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+              </svg>
+            </div>
+            <span class="stat-number">4+</span>
+            <span class="stat-label">Projects Built</span>
+          </div>
+          <div class="stat">
+            <div class="stat-icon">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              </svg>
+            </div>
+            <span class="stat-number">6mo+</span>
+            <span class="stat-label">Gov Internship</span>
+          </div>
+          <div class="stat">
+            <div class="stat-icon">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg>
+            </div>
+            <span class="stat-number">114</span>
+            <span class="stat-label">Credits Earned</span>
+          </div>
+        </div>
+        
+        <div class="badges">
+          <span class="badge highlight">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+            </svg>
+            Open to Internships
+          </span>
+          <span class="badge">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            Dhaka, Bangladesh
+          </span>
+          <a href="https://github.com/azmainalfi22" target="_blank" class="badge">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+            </svg>
+            GitHub
+          </a>
+          <a href="https://linkedin.com/in/azmainalfi" target="_blank" class="badge">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+            LinkedIn
+          </a>
+        </div>
+        
+        <div class="cta-group">
+          <a href="#work" class="btn btn-primary">View My Work</a>
+          <a href="mailto:azmainalfi.aha@gmail.com" class="btn">Email Me</a>
+        </div>
+        
+        <div class="scroll-indicator">↓</div>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="container">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="grid">
+          <article class="card reveal">
+            <h3>
+              <span style="color: var(--accent);">●</span>
+              Lil Baymax — Self-Balancing Medical Assistant
+            </h3>
+            <p>Two-wheeled autonomous healthcare robot with PID-tuned dynamic balance. Real-time vitals (temp, SpO₂, HR, BP), GSM alerts, 3D-printed chassis. ESP32 + Arduino fusion.</p>
+            <div class="tags">
+              <span class="tag">ESP32</span>
+              <span class="tag">PID Control</span>
+              <span class="tag">Healthcare IoT</span>
+              <span class="tag">3D Printing</span>
+            </div>
+            <div class="card-links">
+              <a href="https://github.com/azmainalfi22" target="_blank" class="card-link">
+                → GitHub Repository
+              </a>
+            </div>
+          </article>
+          
+          <article class="card reveal">
+            <h3>
+              <span style="color: var(--accent);">●</span>
+              Chokh-e-Dekha — Civic Issue Reporting
+            </h3>
+            <p>Gov-integrated Laravel platform. Geotagged reports, SMS gateway, role-based dashboards. Successfully resolved 50,000+ civic complaints.</p>
+            <div class="tags">
+              <span class="tag">Laravel</span>
+              <span class="tag">MySQL</span>
+              <span class="tag">Redis</span>
+              <span class="tag">Civic Tech</span>
+            </div>
+            <div class="card-links">
+              <a href="https://github.com/azmainalfi22" target="_blank" class="card-link">
+                → GitHub Repository
+              </a>
+            </div>
+          </article>
+          
+          <article class="card reveal">
+            <h3>
+              <span style="color: var(--accent);">●</span>
+              TravelEase — Full-Stack Booking Engine
+            </h3>
+            <p>Real-time booking with Livewire, Alpine.js, Stripe integration, admin analytics. 90+ Lighthouse score, zero-downtime CI/CD deployment.</p>
+            <div class="tags">
+              <span class="tag">Laravel</span>
+              <span class="tag">Livewire</span>
+              <span class="tag">Stripe</span>
+              <span class="tag">GitHub Actions</span>
+            </div>
+            <div class="card-links">
+              <a href="https://github.com/azmainalfi22" target="_blank" class="card-link">
+                → GitHub Repository
+              </a>
+            </div>
+          </article>
+          
+          <article class="card reveal">
+            <h3>
+              <span style="color: var(--accent);">●</span>
+              4-DOF Robotic Arm — Gesture Control
+            </h3>
+            <p>MPU6050 + nRF24L01 wireless control. Inverse kinematics on STM32, 3D-printed mechanical links, ±1mm positioning repeatability.</p>
+            <div class="tags">
+              <span class="tag">C++</span>
+              <span class="tag">STM32</span>
+              <span class="tag">KiCad</span>
+              <span class="tag">3D Printing</span>
+            </div>
+            <div class="card-links">
+              <a href="https://github.com/azmainalfi22" target="_blank" class="card-link">
+                → GitHub Repository
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" style="background:rgba(17,24,39,.25)">
+      <div class="container">
+        <h2 class="section-title">Experience</h2>
+        <div class="timeline reveal">
+          <div class="timeline-item">
+            <div class="timeline-date">Jul 2024 – Present</div>
+            <div class="timeline-content">
+              <h3>Product & Platform Intern</h3>
+              <div class="company">a2i – Muktopaath, ICT Division</div>
+              <p style="color: var(--mute); font-size: .9rem; margin-bottom: .8rem;">Government of Bangladesh</p>
+              <p>Contributing to government digital platforms serving millions of users. Working on scalable Laravel applications, implementing new features, UX improvements, and ensuring platform reliability through content QA and user support operations.</p>
+              <div class="tags">
+                <span class="tag">Laravel</span>
+                <span class="tag">Platform Engineering</span>
+                <span class="tag">UX Design</span>
+                <span class="tag">Technical Support</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <h2 class="section-title">Skills & Expertise</h2>
+        <div class="skills-grid">
+          <div class="skill-card reveal">
+            <h3>
+              <span class="skill-icon">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M13.5 2c-5.629 0-10.212 4.436-10.475 10h-3.025l4.537 5.917 4.463-5.917h-2.975c.26-3.902 3.508-7 7.475-7 4.136 0 7.5 3.364 7.5 7.5s-3.364 7.5-7.5 7.5c-2.381 0-4.502-1.119-5.876-2.854l-1.847 2.449c1.919 2.088 4.664 3.405 7.723 3.405 5.798 0 10.5-4.702 10.5-10.5s-4.702-10.5-10.5-10.5z"/>
+                </svg>
+              </span>
+              Languages & Frameworks
+            </h3>
+            <div class="tags">
+              <span class="tag">PHP</span>
+              <span class="tag">Laravel</span>
+              <span class="tag">Python</span>
+              <span class="tag">C/C++</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">Java</span>
+              <span class="tag">SQL</span>
+            </div>
+          </div>
+          
+          <div class="skill-card reveal">
+            <h3>
+              <span class="skill-icon">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                  <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                  <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                  <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                  <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                </svg>
+              </span>
+              Embedded & IoT
+            </h3>
+            <div class="tags">
+              <span class="tag">ESP32</span>
+              <span class="tag">STM32</span>
+              <span class="tag">Arduino</span>
+              <span class="tag">PID Control</span>
+              <span class="tag">Sensors</span>
+              <span class="tag">Wireless (nRF24L01)</span>
+            </div>
+          </div>
+          
+          <div class="skill-card reveal">
+            <h3>
+              <span class="skill-icon">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                  <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                  <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                </svg>
+              </span>
+              Tools & Infrastructure
+            </h3>
+            <div class="tags">
+              <span class="tag">Git</span>
+              <span class="tag">GitHub Actions</span>
+              <span class="tag">MySQL</span>
+              <span class="tag">Redis</span>
+              <span class="tag">Linux</span>
+              <span class="tag">Docker</span>
+              <span class="tag">CI/CD</span>
+            </div>
+          </div>
+          
+          <div class="skill-card reveal">
+            <h3>
+              <span class="skill-icon">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                </svg>
+              </span>
+              Professional Skills
+            </h3>
+            <div class="tags">
+              <span class="tag">Agile/Scrum</span>
+              <span class="tag">Technical Documentation</span>
+              <span class="tag">Code Review</span>
+              <span class="tag">Team Collaboration</span>
+              <span class="tag">Problem Solving</span>
+            </div>
+          </div>
+          
+          <div class="skill-card reveal">
+            <h3>
+              <span class="skill-icon">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="2" y1="12" x2="22" y2="12"></line>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                </svg>
+              </span>
+              Languages
+            </h3>
+            <p style="font-size:.95rem;line-height:1.8;color:var(--text-dim)">
+              <strong style="color:var(--text)">Bengali</strong> (Native)<br>
+              <strong style="color:var(--text)">English</strong> (Fluent)<br>
+              <strong style="color:var(--text)">Hindi & Urdu</strong> (Conversational)
+            </p>
+          </div>
+          
+          <div class="skill-card reveal">
+            <h3>
+              <span class="skill-icon">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="3" y1="9" x2="21" y2="9"></line>
+                  <line x1="9" y1="21" x2="9" y2="9"></line>
+                </svg>
+              </span>
+              Design & CAD
+            </h3>
+            <div class="tags">
+              <span class="tag">Figma</span>
+              <span class="tag">KiCad (PCB)</span>
+              <span class="tag">3D Printing</span>
+              <span class="tag">UI/UX Design</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" style="text-align:center">
+      <div class="container">
+        <h2 class="section-title" style="display:block;text-align:center">Let's Build Something Great</h2>
+        <p style="max-width:650px;margin:0 auto 1.5rem;font-size:1.1rem;color:var(--text-dim)">Open to internships, part-time roles, and hybrid opportunities. Available for immediate start. Drop a message and I'll respond within 24 hours.</p>
+        
+        <div style="max-width:500px;margin:0 auto 2rem;padding:1.5rem;background:var(--card);border:1px solid var(--ring);border-radius:12px;backdrop-filter:blur(12px)">
+          <div style="display:flex;flex-direction:column;gap:1rem;text-align:left">
+            <div style="display:flex;align-items:center;gap:1rem">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="flex-shrink:0;color:var(--accent)">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <div>
+                <div style="font-size:.85rem;color:var(--mute);margin-bottom:.2rem">Email</div>
+                <a href="mailto:azmainalfi.aha@gmail.com" style="font-weight:600;color:var(--text)">azmainalfi.aha@gmail.com</a>
+              </div>
+            </div>
+            
+            <div style="display:flex;align-items:center;gap:1rem">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="flex-shrink:0;color:var(--accent)">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              <div>
+                <div style="font-size:.85rem;color:var(--mute);margin-bottom:.2rem">Phone</div>
+                <a href="tel:+8801301754756" style="font-weight:600;color:var(--text)">+880 130 175 4756</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="cta-group">
+          <a href="mailto:azmainalfi.aha@gmail.com" class="btn btn-primary">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            Email Me
+          </a>
+          <a href="https://wa.me/8801301754756?text=Hi%20Alfi,%20saw%20your%20portfolio" class="btn" target="_blank">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+            </svg>
+            WhatsApp
+          </a>
+          <a href="tel:+8801301754756" class="btn">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+            Call
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Designed & Built by Mohammad Azmain Hossain Alfi</p>
+      <p>&copy; <span id="year"></span> · Dhaka, Bangladesh</p>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => entries.forEach(e => e.target.classList.toggle('visible', e.isIntersecting)), { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    window.addEventListener('scroll', () => document.getElementById('header').classList.toggle('scrolled', window.scrollY > 100));
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
