@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Mohammad Azmain Hossain Alfi – Full-Stack & Robotics Engineer</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="description" content="Final-year BRAC CSE | Laravel & ESP32 | Built gov platforms + self-balancing healthcare bot | Open to internships">
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
@@ -31,6 +31,8 @@
     html {
       scroll-behavior: smooth;
       cursor: none;
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
     }
 
     body {
@@ -40,6 +42,19 @@
       overflow-x: hidden;
       position: relative;
       cursor: none;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Enable normal cursor on touch devices */
+    @media (hover: none) and (pointer: coarse) {
+      html, body {
+        cursor: auto;
+      }
+      
+      * {
+        cursor: auto !important;
+      }
     }
 
     /* Custom Cursor - Optimized */
@@ -902,33 +917,228 @@
 
     /* Responsive */
     @media (max-width: 768px) {
+      /* Hide desktop nav links, show only CTA */
       .nav-links a:not(.nav-cta) {
         display: none;
       }
 
-      .hero h1 {
-        font-size: clamp(2.5rem, 10vw, 4rem);
+      /* Adjust logo size */
+      .logo {
+        font-size: 1.2rem;
       }
 
+      /* Hero adjustments */
+      .hero {
+        padding: 80px 0 60px;
+        min-height: auto;
+      }
+
+      .hero h1 {
+        font-size: clamp(2rem, 8vw, 3rem);
+        line-height: 1.1;
+        margin-bottom: 15px;
+      }
+
+      .typewriter {
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+      }
+
+      .hero-description {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        padding: 0 10px;
+      }
+
+      /* Stats grid mobile */
       .stats-container {
         grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        margin: 30px 0;
       }
 
+      .stat-card {
+        padding: 20px 10px;
+      }
+
+      .stat-number {
+        font-size: 2rem;
+      }
+
+      .stat-label {
+        font-size: 0.8rem;
+      }
+
+      /* Hero CTA buttons */
+      .hero-cta {
+        flex-direction: column;
+        gap: 12px;
+        padding: 0 20px;
+      }
+
+      .btn {
+        width: 100%;
+        justify-content: center;
+        padding: 12px 20px;
+        font-size: 0.95rem;
+      }
+
+      /* Section spacing */
+      section {
+        padding: 60px 0;
+      }
+
+      .section-title {
+        font-size: clamp(1.8rem, 6vw, 2.5rem);
+      }
+
+      .section-subtitle {
+        font-size: 1rem;
+        padding: 0 10px;
+      }
+
+      /* Projects grid */
       .projects-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
       }
 
+      .project-card {
+        padding: 25px 20px;
+      }
+
+      .project-title {
+        font-size: 1.3rem;
+      }
+
+      .project-description {
+        font-size: 0.95rem;
+      }
+
+      /* Timeline mobile */
       .timeline::before {
-        left: 30px;
+        left: 20px;
       }
 
       .timeline-item .timeline-content {
-        margin-left: 60px !important;
+        margin-left: 50px !important;
         margin-right: 0 !important;
+        padding: 20px;
       }
 
       .timeline-dot {
-        left: 30px;
+        left: 20px;
+      }
+
+      /* Skills grid */
+      .skills-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .skill-category {
+        padding: 20px;
+      }
+
+      /* Contact section */
+      .contact-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        padding: 0 10px;
+      }
+
+      .contact-card {
+        padding: 20px 10px;
+        min-height: 150px;
+      }
+
+      .contact-icon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 10px;
+      }
+
+      .contact-title {
+        font-size: 0.9rem;
+      }
+
+      .contact-info {
+        font-size: 0.8rem;
+      }
+
+      /* Hide floating orbs on mobile for performance */
+      .floating-orb {
+        display: none;
+      }
+
+      /* Hide custom cursor on mobile */
+      .cursor, .cursor-follower {
+        display: none;
+      }
+
+      /* Container padding */
+      .container {
+        padding: 0 15px;
+      }
+
+      /* Badge text */
+      .hero-badge, .section-badge {
+        font-size: 0.85rem;
+        padding: 6px 16px;
+      }
+
+      /* Footer */
+      footer {
+        padding: 30px 0;
+      }
+
+      .social-links {
+        gap: 15px;
+      }
+
+      .social-link {
+        width: 45px;
+        height: 45px;
+      }
+    }
+
+    /* Extra small devices */
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+
+      .stats-container {
+        gap: 10px;
+      }
+
+      .stat-card {
+        padding: 15px 5px;
+      }
+
+      .stat-number {
+        font-size: 1.5rem;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tech-tag {
+        font-size: 0.75rem;
+        padding: 4px 10px;
+      }
+    }
+
+    /* Handle landscape orientation on mobile */
+    @media (max-width: 768px) and (orientation: landscape) {
+      .hero {
+        min-height: auto;
+        padding: 60px 0 40px;
+      }
+
+      .stats-container {
+        grid-template-columns: repeat(4, 1fr);
       }
     }
 
